@@ -5,6 +5,7 @@ import App from "./App";
 import { BookingProvider } from "./context/BookingContext";
 import "daup-theme/fonts.css";
 import "daup-theme/tokens.css";
+import "./theme-aliases.css";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -1,0 +1,10 @@
+/* Extra aliases only. Exact cream/ink/terracotta/forest come from daup-theme. */
+:root {
+  --cream-deep: #ebe3d4;
+  --paper: var(--white);
+  --terracotta-dark: #a44a1c;
+  --forest-soft: #3d5c4c;
+  --closed: #8a8174;
+  --font: var(--sans);
+  --display: var(--serif);
+}

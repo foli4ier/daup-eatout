@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getEatery, getMenu } from "../api/eatout";
 import MenuList from "../components/MenuList";
 import Stepper from "../components/Stepper";
 import StickyBar from "../components/StickyBar";
 import TimeSlots from "../components/TimeSlots";
+import TopBar from "../components/TopBar";
 import ZonePicker from "../components/ZonePicker";
 import { useBooking } from "../context/BookingContext";
 import { peopleLabel } from "../lib/format";
@@ -52,11 +53,8 @@ export default function Eatery() {
   if (!place || !id) {
     return (
       <main className="page">
-        <Link className="back" to="/">
-          Back
-        </Link>
-        <h1>We can’t find that place</h1>
-        <p className="lede">It may have moved. Pick another table from the list.</p>
+        <TopBar backTo="/" />
+        <p className="empty">We can’t find that place.</p>
       </main>
     );
   }
@@ -67,14 +65,7 @@ export default function Eatery() {
 
   return (
     <main className="page has-bar">
-      <header className="topbar">
-        <Link className="back" to="/" aria-label="Back to places">
-          Back
-        </Link>
-        <Link className="brand" to="/">
-          Eat<span>Out</span>
-        </Link>
-      </header>
+      <TopBar backTo="/" backAriaLabel="Back to places" />
 
       <div className="place-head">
         <div className="row">
@@ -93,7 +84,7 @@ export default function Eatery() {
           How many people?
         </p>
         <Stepper
-          label="Party size"
+          label="People"
           value={draft.partySize}
           onChange={booking.setPartySize}
           valueLabel={peopleLabel(draft.partySize)}

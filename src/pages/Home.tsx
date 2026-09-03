@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { listAreas, listCuisines, listEateries } from "../api/eatout";
 import EateryCard from "../components/EateryCard";
+import TopBar from "../components/TopBar";
 import type { Eatery } from "../types";
 
 export default function Home() {
@@ -31,13 +31,9 @@ export default function Home() {
 
   return (
     <main className="page">
-      <header className="topbar">
-        <Link className="brand" to="/">
-          Eat<span>Out</span>
-        </Link>
-      </header>
-      <h1>Find a table. Order food.</h1>
-      <p className="lede">Search by name, area, or what you feel like eating.</p>
+      <TopBar />
+      <h1>EatOut</h1>
+      <p className="lede">Find a table. Order food.</p>
 
       <label className="sr-only" htmlFor="search">
         Search eateries

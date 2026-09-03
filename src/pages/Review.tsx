@@ -4,6 +4,7 @@ import { createOrder, createReservation, getEatery } from "../api/eatout";
 import GuestFields from "../components/GuestFields";
 import Stepper from "../components/Stepper";
 import TimeSlots from "../components/TimeSlots";
+import TopBar from "../components/TopBar";
 import ZonePicker from "../components/ZonePicker";
 import { useBooking } from "../context/BookingContext";
 import { money, peopleLabel } from "../lib/format";
@@ -75,14 +76,7 @@ export default function Review() {
 
   return (
     <main className="page">
-      <header className="topbar">
-        <Link className="back" to={`/place/${place.id}`} aria-label="Back to menu">
-          Back
-        </Link>
-        <Link className="brand" to="/">
-          Eat<span>Out</span>
-        </Link>
-      </header>
+      <TopBar backTo={`/place/${place.id}`} backAriaLabel="Back to menu" />
 
       <h1>Check your table{itemCount ? " and order" : ""}</h1>
       <p className="lede">
@@ -101,7 +95,7 @@ export default function Review() {
         )}
         <div style={{ marginTop: 12 }}>
           <Stepper
-            label="Party size"
+            label="People"
             value={draft.partySize}
             onChange={booking.setPartySize}
             valueLabel={peopleLabel(draft.partySize)}
@@ -178,14 +172,14 @@ export default function Review() {
       {error ? <p className="hint">{error}</p> : null}
 
       <div className="stack">
-        <button type="button" className="primary" onClick={confirm} disabled={!canConfirm}>
+        <button type="button" className="btn btn-primary" onClick={confirm} disabled={!canConfirm}>
           {busy
             ? "Booking…"
             : itemCount
               ? "Confirm table and order"
               : "Confirm table"}
         </button>
-        <Link className="ghost-btn" to={`/place/${place.id}`}>
+        <Link className="btn btn-outline" to={`/place/${place.id}`}>
           Keep browsing the menu
         </Link>
       </div>

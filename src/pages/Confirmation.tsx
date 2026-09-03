@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getBooking } from "../api/eatout";
+import TopBar from "../components/TopBar";
 import { money, peopleLabel } from "../lib/format";
 import { formatWhen } from "../lib/hours";
 import type { Eatery, Order, Reservation } from "../types";
@@ -29,11 +30,9 @@ export default function Confirmation() {
   if (!data || !data.eatery) {
     return (
       <main className="page">
-        <Link className="back" to="/">
-          Home
-        </Link>
+        <TopBar backTo="/" />
         <h1>We can’t find that booking</h1>
-        <p className="lede">It lives on this phone. If you cleared the browser, it’s gone.</p>
+        <p className="lede">This booking is on this phone. If you clear the browser, we can’t show it.</p>
       </main>
     );
   }
@@ -43,11 +42,7 @@ export default function Confirmation() {
 
   return (
     <main className="page">
-      <header className="topbar">
-        <Link className="brand" to="/">
-          Eat<span>Out</span>
-        </Link>
-      </header>
+      <TopBar />
       <div className="success-mark" aria-hidden="true">
         ✓
       </div>
@@ -93,7 +88,7 @@ export default function Confirmation() {
       <p className="note">Pay at the table. Nothing is charged now.</p>
 
       <div className="stack">
-        <Link className="primary" to="/">
+        <Link className="btn btn-primary" to="/">
           Find another place
         </Link>
       </div>

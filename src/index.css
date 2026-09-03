@@ -481,10 +481,6 @@ h2 {
 }
 
 @media (min-width: 480px) {
-  body {
-    background: var(--chip);
-  }
-
   .shell {
     min-height: 100dvh;
     box-shadow: var(--shadow);
